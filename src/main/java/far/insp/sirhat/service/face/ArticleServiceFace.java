@@ -5,5 +5,6 @@ import far.insp.sirhat.persistance.entity.Article;
 import java.util.List;
 
 public interface ArticleServiceFace {
-    Article findArticleById(Long id);
+    Article findArticleById(String code);
+    byte[] getImage(String name) throws Exception;
 }

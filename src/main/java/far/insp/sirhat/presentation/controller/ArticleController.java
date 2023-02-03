@@ -22,9 +22,9 @@ public class ArticleController {
         this.articleService = articleService;
     }
 
-    @GetMapping("one")
-    public ResponseEntity<Article> getArticleById(@RequestParam("id")Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(articleService.findArticleById(id));
+    @GetMapping("code")
+    public ResponseEntity<Article> getArticleById(@RequestParam("code") String code) {
+        return ResponseEntity.status(HttpStatus.OK).body(articleService.findArticleById(code));
     }
 
 }
