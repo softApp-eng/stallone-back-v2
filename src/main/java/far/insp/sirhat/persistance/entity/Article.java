@@ -24,5 +24,6 @@ public class Article implements Serializable {
     private String designation;
 
     private Long quantite;
+    private Double prix;
 
 }

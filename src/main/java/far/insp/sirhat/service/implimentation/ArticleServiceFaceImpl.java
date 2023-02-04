@@ -3,6 +3,7 @@ package far.insp.sirhat.service.implimentation;
 import far.insp.sirhat.exception.BadRequestException;
 import far.insp.sirhat.persistance.entity.Article;
 import far.insp.sirhat.persistance.repository.ArticleRepository;
+import far.insp.sirhat.presentation.dto.QuantiteArticleDto;
 import far.insp.sirhat.service.face.ArticleServiceFace;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -24,9 +25,22 @@ public class ArticleServiceFaceImpl implements ArticleServiceFace {
     }
 
     @Override
-    public Article findArticleById(String code) {
+    public Article findArticleByCode(String code) {
         return articleRepository.findFirstByCode(code)
                 .orElseThrow(()->new BadRequestException("Article introuvable"));
+    }
+
+    @Override
+    public Article addQuantiteArticleById(QuantiteArticleDto quantiteArticleDto) {
+        Article article = articleRepository.findById(quantiteArticleDto.getArticleId())
+                .orElseThrow(()->new BadRequestException("Article introuvable"));
+        article.setQuantite(article.getQuantite() + quantiteArticleDto.getQuentite());
+        return articleRepository.save(article);
+    }
+
+    @Override
+    public List<Article> stock() {
+        return articleRepository.findAll();
     }
 
     @Override

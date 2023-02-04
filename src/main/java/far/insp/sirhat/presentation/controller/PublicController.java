@@ -14,7 +14,7 @@ public class PublicController {
     public PublicController(ArticleServiceFace articleService) {
         this.articleService = articleService;
     }
-    @GetMapping(value = "/article/image",produces = MediaType.APPLICATION_PDF_VALUE)
+    @GetMapping(value = "/article/image")
     @ResponseBody
     public byte[] getPdfAttribution(@RequestParam("name") String name) throws Exception {
         return articleService.getImage(name);
