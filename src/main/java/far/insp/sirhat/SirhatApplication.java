@@ -26,6 +26,6 @@ public class SirhatApplication {
 			Files.createDirectories(Paths.get(articleFolder));
 			System.err.println(UUID.randomUUID().toString());
 			System.err.println(new BCryptPasswordEncoder().encode("123456"));
-		};
+		 };
 	}
 }
